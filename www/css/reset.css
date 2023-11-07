@@ -3,6 +3,7 @@
     --secondary-title-color:#F0E6D2;
     --main-text-color:#A09B8C;
 }
+
 section{
     margin: 0!important;
     padding: 0!important;
@@ -21,9 +22,11 @@ html, body {
     min-height: 100%;
     margin: 0;
 }
+
 textarea:focus, input:focus{
     outline: none;
 }
+
 body{
     color: var(--main-text-color);
     font-family: 'spiegel-regular';

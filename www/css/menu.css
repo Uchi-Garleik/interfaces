@@ -1,9 +1,9 @@
-#formularioBuscar{
+/*#formularioBuscar{
     display: flex;
     gap: 1em;
 }
 
-.button-field{
+ .button-field{
     background: linear-gradient(to bottom right, #FFDB90, #7A5622);
     display: inline-block;
     height: fit-content;
@@ -66,4 +66,4 @@ button {
     font-style: normal;
     line-height: normal;
     letter-spacing: 1.15px;
-}
+} */

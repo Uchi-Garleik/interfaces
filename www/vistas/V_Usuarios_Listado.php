@@ -10,6 +10,7 @@
     echo '<th>Movil</th>';
     echo '<th>Sexo</th>';
     echo '<th>Activo</th>';
+    echo '<th>Editar</th>';
     echo '</tr>';
 
     function returnEstado($fila){
@@ -40,6 +41,7 @@
         echo '<td>'.$fila['movil'].'</td>';
         echo '<td>'.returnGenero($fila).'</td>';
         echo '<td>'.returnEstado($fila).'</td>';
+        echo '<td> <button>Editar</button> </td>';
         echo '</tr>';
     }
 

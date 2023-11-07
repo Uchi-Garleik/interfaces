@@ -51,8 +51,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cruds</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
-                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Pedidos', 'getVistaPedidos')">Another action</a></li>
+                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Lista De Usuarios</a></li>
+                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Pedidos', 'getVistaPedidos')">Crear Usuarios</a></li>
                                 <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('', '')">Something else here</a></li>
                             </ul>
                         </li>
