@@ -24,9 +24,15 @@
             Vista::render('V_Usuarios.php');
         }
         public function buscarUsuarios($filtros=array()){
+            echo "hola";
             $usuarios=$this->modelo->buscarUsuarios($filtros);
-            Vista::render('V_Usuarios_Listado.php', 
-                            array('usuarios'=>$usuarios));
+            Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
+
+        public function insertarUsuario($filtros=array()){
+            echo "wtf";
+            $usuarios=$this->modelo->insertarUsuario($filtros);
+            // Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+        }
+
     }
-?>

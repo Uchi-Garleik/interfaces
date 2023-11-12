@@ -54,5 +54,41 @@
             return $usuarios;
         }
 
+        public function insertarUsuario($filtros=array()){
+
+            foreach ($filtros as $valor) {
+                if ($valor == "") {
+                    $valor = "q";
+                }
+            }
+            extract($filtros);
+
+            if ($nombre == "") {
+                $nombre = " ";
+            }
+
+            if ($apellido_1 == "") {
+                $apellido_1 = " ";
+            }
+            
+            if ($apellido_2 == "") {
+                $apellido_2 = " ";
+            }
+            
+            if ($sexo == "") {
+                $sexo = " ";
+            }
+            
+            if ($movil == "") {
+                $movil = " ";
+            }
+
+
+            $SQL = "INSERT INTO usuarios (nombre, apellido_1, apellido_2, sexo, fecha_Alta, mail, movil, login, pass, activo) VALUES (";
+            $SQL .= "'$nombre', '$apellido_1', '$apellido_2', '$sexo', NOW(), '$mail', '$movil', '$login', MD5('$pass'), '$activo');";
+            echo $SQL;
+            // $this->DAO->insertar($SQL);
+        }
+
     }
 ?>

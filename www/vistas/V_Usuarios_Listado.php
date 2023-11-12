@@ -1,17 +1,19 @@
 <?php
     $usuarios= $datos['usuarios'];
-    echo '<div id="tableDiv">';
-    echo '<table>';
+    echo '<div id="tableDiv" class="container-fluid table-responsive">';
+    echo '<table class="table container-fluid table-light table-striped table-bordered table-hover">';
+    echo '<thead class="thead-dark">';
     echo '<tr>';
-    echo '<th>Nombre</th>';
-    echo '<th>Apellido 1</th>';
-    echo '<th>Apellido 2</th>';
-    echo '<th>Email</th>';
-    echo '<th>Movil</th>';
-    echo '<th>Sexo</th>';
-    echo '<th>Activo</th>';
-    echo '<th>Editar</th>';
+    echo '<th scope="col">Nombre</th>';
+    echo '<th scope="col">Apellido 1</th>';
+    echo '<th scope="col">Apellido 2</th>';
+    echo '<th scope="col">Email</th>';
+    echo '<th scope="col">Movil</th>';
+    echo '<th scope="col">Sexo</th>';
+    echo '<th scope="col">Activo</th>';
+    echo '<th scope="col">Editar</th>';
     echo '</tr>';
+    echo '</thead>';
 
     function returnEstado($fila){
         if ($fila['activo'] == 'S') {
@@ -34,7 +36,7 @@
 
     foreach($usuarios as $fila){
         echo '<tr>';
-        echo '<td>'.$fila['nombre'].'</td>';
+        echo '<td scope="row">'.$fila['nombre'].'</td>';
         echo '<td>'.$fila['apellido_1'].'</td>';
         echo '<td>'.$fila['apellido_2'].'</td>';
         echo '<td>'.$fila['mail'].'</td>';
