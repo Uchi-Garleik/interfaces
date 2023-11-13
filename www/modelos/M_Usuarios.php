@@ -10,6 +10,7 @@
         }
 
         public function buscarUsuarios($filtros=array()){
+            $id_Usuario='';
             $nombre='';
             $mail='';
             $movil='';
@@ -24,6 +25,14 @@
                 $pass = addslashes($pass);
                 $SQL.= " AND login = '$usuario' AND pass = MD5('$pass') ";
             }else{
+                if($id_Usuario!=''){
+                    $aTexto=explode(' ',$id_Usuario);
+                    $SQL.=" AND (1=2 ";
+                    foreach ($aTexto as $palabra){
+                        $SQL.=" OR id_Usuario LIKE $palabra";
+                    }
+                    $SQL.=" ) ";
+                }
                 if($nombre!=''){
                     $aTexto=explode(' ', $nombre);
                     $SQL.=" AND (1=2 ";
@@ -87,7 +96,7 @@
             $SQL = "INSERT INTO usuarios (nombre, apellido_1, apellido_2, sexo, fecha_Alta, mail, movil, login, pass, activo) VALUES (";
             $SQL .= "'$nombre', '$apellido_1', '$apellido_2', '$sexo', NOW(), '$mail', '$movil', '$login', MD5('$pass'), '$activo');";
             echo $SQL;
-            // $this->DAO->insertar($SQL);
+            $this->DAO->insertar($SQL);
         }
 
     }
