@@ -29,9 +29,12 @@
         }
 
         public function insertarUsuario($filtros=array()){
-            echo "wtf";
             $usuarios=$this->modelo->insertarUsuario($filtros);
-            // Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+        }
+
+        public function editarUsuario($filtros=array()){
+            $this->modelo->editarUsuario($filtros);
+
         }
 
     }

@@ -5,7 +5,6 @@ function buscarUsuarios(id_Usuario){
     if ( id_Usuario != null ) {
         parametros += "&id_Usuario=" + id_Usuario;
     }
-    console.log(parametros);
     fetch("controladores/C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
@@ -14,8 +13,6 @@ function buscarUsuarios(id_Usuario){
             }
         })
         .then(vista => {
-            console.log("vista:")
-            console.log(vista);
             document.getElementById("capaResultadosBusqueda").innerHTML = vista;
             if (id_Usuario != null) {
                 document.querySelector('#idEditar').value = document.querySelector('td.id_Usuario').innerHTML;
@@ -79,7 +76,6 @@ function insertarUsuario(){
 
 function guardarInformacion(id_Usuario){
     buscarUsuarios(id_Usuario);
-    console.log(document.querySelector('td.id_Usuario').innerHTML);
 }
 
 function actualizarCamposEditarUsuario(){
@@ -87,5 +83,23 @@ function actualizarCamposEditarUsuario(){
 }
 
 function editarUsuario(id_Usuario) {
-    
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=editarUsuario";
+    parametros += "&id_Usuario=" + document.querySelector('#idEditar').value;
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioEditarUsuario"))).toString();
+    console.log("AOEOELE")
+    console.log(parametros);
+    fetch("controladores/C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('Respuesta ok');
+                return res.text();
+            }
+        })
+        .then(vista => {
+            buscarUsuarios();
+        })
+        .catch(err => {
+            console.log("Error al realizar la peticion.", err.message);
+        });
 }

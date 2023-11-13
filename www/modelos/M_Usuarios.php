@@ -64,12 +64,6 @@
         }
 
         public function insertarUsuario($filtros=array()){
-
-            foreach ($filtros as $valor) {
-                if ($valor == "") {
-                    $valor = "q";
-                }
-            }
             extract($filtros);
 
             if ($nombre == "") {
@@ -98,6 +92,48 @@
             echo $SQL;
             $this->DAO->insertar($SQL);
         }
+        public function editarUsuario($filtros=array()){
+            extract($filtros);
+            var_dump($filtros);
+            if ($nombre == "") {
+                $nombre = " ";
+            }
 
+            if ($apellido_1 == "") {
+                $apellido_1 = " ";
+            }
+            
+            if ($apellido_2 == "") {
+                $apellido_2 = " ";
+            }
+            
+            if ($sexoEditar == "") {
+                $sexoEditar = " ";
+            }
+
+            if($mail == ""){
+                $mail = "";
+            }
+            
+            if ($movil == "") {
+                $movil = " ";
+            }
+            if ($login == "") {
+                $login = " ";
+            }
+
+            if ($pass == "") {
+                $pass = " ";
+            }
+
+            if ($activoEditar == "") {
+                $activoEditar = " ";
+            }
+            
+            
+            $SQL = "UPDATE usuarios SET nombre ='$nombre', apellido_1 = '$apellido_1', apellido_2 = '$apellido_2', sexo = '$sexoEditar', mail = '$mail', movil = '$movil', login = '$login', pass =MD5('$pass'), activo = '$activoEditar' WHERE id_Usuario = $id_Usuario";
+            echo $SQL;
+            $this->DAO->actualizar($SQL);
+        }
     }
 ?>

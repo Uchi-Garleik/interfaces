@@ -90,7 +90,7 @@ echo '<h2>Busqueda de usuarios: </h2>';
 
     <div class="mb-3">
         <label class="form-label" for="idEditar">Id</label>
-        <input type="number" name="id" id="idEditar" class="form-control" disabled>
+        <input type="number" name="idEditar" id="idEditar" class="form-control" disabled>
     </div>
     <div class="mb-3">
         <label class="form-label" for="nombreEditar">nombre</label>
