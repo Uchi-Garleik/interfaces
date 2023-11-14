@@ -86,66 +86,75 @@ echo '<h2>Busqueda de usuarios: </h2>';
 
 
 <h1>Editar Usuario</h1>
-<form id="formularioEditarUsuario" name="formularioEditarUsuario" onkeydown="return event.key != 'Enter';" onsubmit="return false">
-
-    <div class="mb-3">
-        <label class="form-label" for="idEditar">Id</label>
+<form id="formularioEditarUsuario" name="formularioEditarUsuario" onkeydown="return event.key != 'Enter';" onsubmit="return false" class="row">
+    <div class="mb-3 col-md-12 input-group">
+        <label class="input-group-text" for="idEditar">Id</label>
         <input type="number" name="idEditar" id="idEditar" class="form-control" disabled>
     </div>
-    <div class="mb-3">
-        <label class="form-label" for="nombreEditar">nombre</label>
+    <div class="mb-3 col-md-4">
+        <label class="input-group-text" for="nombreEditar">nombre</label>
         <input type="text" name="nombre" id="nombreEditar" class="form-control">
     </div>
-    <div class="mb-3">
-        <label class="form-label" for="apellido_1_Editar">apellido_1</label>
+    <div class="mb-3 col-md-4">
+        <label class="input-group-text" for="apellido_1_Editar">apellido_1</label>
         <input type="text" name="apellido_1" id="apellido_1_Editar" class="form-control">
     </div>
 
-    <div class="mb-3">
-        <label class="form-label" for="apellido_2_Editar">apellido_2</label>
+    <div class="mb-3 col-md-4">
+        <label class="input-group-text" for="apellido_2_Editar">apellido_2</label>
         <input type="text" name="apellido_2" id="apellido_2_Editar" class="form-control">
     </div>
 
-    <div class="mb-3">
-        <span>Sexo:</span>
-        <label for="hombreEditar">Hombre</label>
-        <input type="radio" name="sexoEditar" id="hombreEditar" value="H">
-
-        <label for="mujerEditar">Mujer</label>
-        <input type="radio" name="sexoEditar" id="mujerEditar" value="M">
-
-        <label for="nodecirEditar">No Decir</label>
-        <input type="radio" name="sexoEditar" id="nodecirEditar" value="">
-
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label" for="mailEditar">mail</label>
+    <div class="mb-3 col-md-6">
+        <label class="input-group-text" for="mailEditar">mail</label>
         <input type="email" name="mail" id="mailEditar" class="form-control" required>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label" for="movilEditar">movil</label>
+    <div class="mb-3 col-md-6">
+        <label class="input-group-text" for="movilEditar">movil</label>
         <input type="number" name="movil" id="movilEditar" class="form-control">
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-12">
+        <span>Sexo:</span>
+
+        <div class="form-check">
+            <label class="form-check-label" for="hombreEditar">Hombre</label>
+            <input class="form-check-input" type="radio" name="sexoEditar" id="hombreEditar" value="H">
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label" for="mujerEditar">Mujer</label>
+            <input class="form-check-input" type="radio" name="sexoEditar" id="mujerEditar" value="M">
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label" for="nodecirEditar">No Decir</label>
+            <input class="form-check-input" type="radio" name="sexoEditar" id="nodecirEditar" value="">
+        </div>
+    </div>
+
+    <div class="mb-3 col-md-6">
         <label class="form-label" for="loginEditar">Login</label>
         <input type="text" name="login" id="loginEditar" class="form-control" required>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 col-md-6">
         <label class="form-label" for="passEditar">Password</label>
         <input type="password" name="pass" id="passEditar" class="form-control" required>
     </div>
-
-    <div class="mb-3">
+    <div class="mb-3 col-md-12">
         <span>Activo:</span>
-        <label for="activoSiEditar">Si</label>
-        <input type="radio" name="activoEditar" id="activoSiEditar" value="S" required>
+        <div class="form-check">
+            <label class="form-check-label" for="activoSiEditar">Si</label>
+            <input class="form-check-input" type="radio" name="activoEditar" id="activoSiEditar" value="S" required>
+        </div>
 
-        <label for="activoNo2">No</label>
-        <input type="radio" name="activoEditar" id="activoNoEditar" value="N" required>
+        <div class="form-check">
+            <label class="form-check-label" for="activoNo2">No</label>
+            <input class="form-check-input" type="radio" name="activoEditar" id="activoNoEditar" value="N" required>
+        </div>
+
     </div>
     <button type="submit" onclick="editarUsuario()">Actualizar Usuario</button>
 </form>

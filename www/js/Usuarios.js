@@ -46,8 +46,6 @@ function buscarUsuarios(id_Usuario){
                     default:
                         break;
                 }
-                // document.querySelector('input[name="activoEditar"]').value = document.querySelector('td.password').innerHTML;
-                // actualizarCamposEditarUsuario();
             }
         })
         .catch(err => {
@@ -78,9 +76,6 @@ function guardarInformacion(id_Usuario){
     buscarUsuarios(id_Usuario);
 }
 
-function actualizarCamposEditarUsuario(){
-
-}
 
 function editarUsuario(id_Usuario) {
     let opciones = { method: "GET" };
