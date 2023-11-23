@@ -23,6 +23,7 @@
         public function getVistaUsuarios(){
             Vista::render('V_Usuarios.php');
             $this->buscarUsuarios();
+            Vista::render('V_Paginador.php');
         }
         public function buscarUsuarios($filtros=array()){
             $usuarios=$this->modelo->buscarUsuarios($filtros);
