@@ -1,6 +1,10 @@
 <?php session_start();
     $getPost=array_merge($_POST,$_GET,$_FILES);
 
+    if(isset($_GET['pagina'])){
+        $_GET['pagina'] = $_GET['pagina']+1;
+    }
+
     if(isset($getPost['controlador'])){
         $controlador= 'C_' .$getPost['controlador'];
         if(isset($getPost['metodo'])){

@@ -94,7 +94,7 @@
         }
         public function editarUsuario($filtros=array()){
             extract($filtros);
-            var_dump($filtros);
+            //var_dump($filtros);
             if ($nombre == "") {
                 $nombre = " ";
             }

@@ -1,10 +1,15 @@
-function buscarUsuarios(id_Usuario){
+function buscarUsuarios(id_Usuario, pagina){
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
     if ( id_Usuario != null ) {
         parametros += "&id_Usuario=" + id_Usuario;
     }
+
+    if ( pagina != null ) {
+        parametros += "&pagina=" + pagina;
+    }
+
     fetch("controladores/C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {

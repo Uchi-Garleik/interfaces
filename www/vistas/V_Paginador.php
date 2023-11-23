@@ -1,23 +1,22 @@
 <?php
 
-require_once 'modelos/DAO.php';
+$paginationData = $datos['paginationData'];
+echo "<br><br><br>";
+var_dump($paginationData);
 
+// for ($i=0; $i < $paginationData['numberOfPages'] ; $i++) {
+//     echo "<span class=\"pagina$i\" onclick=\"buscarUsuarios(null, $i)\">". $i+1 ."...</span>";
+// }
 
-$modelo = '';
+//BACKWARDS
+echo "<span class=\"sidepaginator\" onclick=\"buscarUsuarios(null,". ($paginationData['numberOfPages']-$paginationData['numberofPages'])+1 .  ")\"> \<\< </span>";
 
-$modelo = new DAO();
-$query = "SELECT COUNT(id) as total_rows FROM tu_tabla";
-$queri = $modelo -> actualizar($query);
-$limit = 5; // Número de elementos por página
+//NUMBERS
+echo "<span class=\"numberPaginator\" onclick=\"buscarUsuarios(null,". $paginationData['currentPage']-2 .")\">". $paginationData['currentPage']-2 ."...</span>";
+echo "<span class=\"numberpaginator\" onclick=\"buscarUsuarios(null,". $paginationData['currentPage']-1 .")\">". $paginationData['currentPage']-1 ."...</span>";
+echo "<span class=\"numberpaginator\" onclick=\"buscarUsuarios(null,". $paginationData['currentPage']+1 .")\">". $paginationData['currentPage']+1 ."...</span>";
 
-$output = '';
-
-// Construye los enlaces de paginación
-for ($i = 1; $i <= $total_pages; $i++) {
-    $output .= '<span class="pagination-link" style="cursor:pointer;" data-page="'.$i.'">'.$i.'</span>';
-}
-
-// Devuelve los enlaces de paginación al script JS
-echo $output;
+// FRONTWARDS
+echo "<span class=\"sidepaginator\" onclick=\"buscarUsuarios(null,". $paginationData['numberOfPages'] .  ")\"> \>\> </span>";
 
 ?>
