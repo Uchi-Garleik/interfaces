@@ -1,4 +1,4 @@
-:root{
+/* :root{
     --main-title-color:#C89B3C;
     --secondary-title-color:#F0E6D2;
     --main-text-color:#A09B8C;
@@ -16,14 +16,14 @@ a{
 
 a:hover{
     color: rgba(255,255,255,.75);
-}
+} */
 
 html, body {
     min-height: 100%;
     margin: 0;
 }
 
-textarea:focus, input:focus{
+/* textarea:focus, input:focus{
     outline: none;
 }
 
@@ -34,9 +34,9 @@ body{
 }
 
 html{
-    background: #0B162B; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #0B162B, rgba(13,28,57,0.96)); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #0B162B, rgba(13,28,57,0.96)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0B162B;
+    background: -webkit-linear-gradient(to bottom, #0B162B, rgba(13,28,57,0.96)); 
+    background: linear-gradient(to bottom, #0B162B, rgba(13,28,57,0.96)); 
 }
 
 
@@ -44,4 +44,4 @@ h1, h2, h3, h4, h5, h6, .title, .h1, .h2, .h3, .h4, .h5, .h6{
     font-family: 'beaufort-bold';
     color: var(--main-title-color);
     font-weight: unset;
-}
+} */
