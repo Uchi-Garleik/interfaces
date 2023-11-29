@@ -41,9 +41,9 @@
 </head>
 
 <body class="d-flex align-items-center justify-content-center">
-    <div id="section" class="d-flex align-items-center justify-content-center">
-        <div class="text-center w-100">
-            <h1>Login Form</h1>
+    <div id="section" class="row">
+        <div class="m-auto col-lg-12">
+            <h1 class="text-center text-capitalize">Login Form</h1>
             <form id="formularioBuscar" method="post" action="login.php">
                 <div class="form-group">
                     <div class="input-group mb-3">
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="button" onclick="buscarUsuarios(null, null, 'validarUsuario')" id="buttonlogin" class="btn btn-primary btn-block">Login</button>
+                    <button type="button" onclick="buscarUsuarios(null, null, 'buscarUsuarios','login')" id="buttonlogin" class="btn btn-primary btn-block">Login</button>
                 </div>
                 
             </form>

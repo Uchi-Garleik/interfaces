@@ -49,10 +49,22 @@
         echo '<td class="estado">'.returnEstado($fila).'</td>';
         echo '<td class="login">'.$fila['login'].'</td>';
         echo '<td class="pass">'.$fila['pass'].'</td>';
-        echo '<td> <button onclick="guardarInformacion('.$fila['id_Usuario'].')">Editar</button> </td>';
+//        echo '<td> <button onclick="guardarInformacion('.$fila['id_Usuario'].')">Editar</button> </td>';
+        echo '<td> <button class="buttonEditUser">Editar</button> </td>';
         echo '</tr>';
     }
 
     echo '</table>';
     echo '</div>';
 ?>
+
+<button id="#holabtn" onclick="console.log('wtf')">Hola</button>
+
+<script>
+    var xyz = 0;
+    console.log("holaholaholahola");
+    console.log(xyz);
+    /*document.querySelector('#holabtn').addEventListener("click",()=>{
+        console.log(xyz);
+    });*/
+</script>

@@ -14,8 +14,8 @@
 
 body{
     /* background:linear-gradient(to bottom right, #03425a, #002a39 ); */
-    background-color: var(--accent-200);
-
+    /* background-color: var(--accent-200); */
+    background: url("../img/key_pattern+copy.jpg");
 }
 
 #section .form-row{
@@ -23,6 +23,7 @@ body{
 }
 
 #section{
+    background: linear-gradient(180deg, #FFF 0%, #D9D9D9 100%);
     /* background:linear-gradient(to bottom right, var(--accent-100), var(--accent-200) ); */
     background-color: var(--accent-200);
     box-shadow: 0px 0px 7px 1px #000; 

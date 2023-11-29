@@ -18,11 +18,10 @@ echo '<h2>Busqueda de usuarios: </h2>';
         <input type="text" id="movil0" name="movil"> <br>
     </div>
     <div class="button-field">
-        <button type="button" onclick="buscarUsuarios(null, null, 'buscarUsuarios')" class="title" id="buscar-btn">BUSCAR</button>
+        <button type="button" onclick="buscarUsuarios(null, null,'buscarUsuarios','buscarTodos')" class="title" id="buscar-btn">BUSCAR</button>
     </div>
 </form>
-<hr>
-<h1>Insertar Usuario</h1>
+<!-- <h1>Insertar Usuario</h1>
 
 <form id="formularioInsertarUsuario" name="formularioInsertarUsuario" onkeydown="return event.key != 'Enter';">
     <div class="mb-3">
@@ -81,11 +80,106 @@ echo '<h2>Busqueda de usuarios: </h2>';
         <input type="radio" name="activo" id="activoNo" value="N" required>
     </div>
     <button type="button" onclick="insertarUsuario()">registrar usuario</button>
+</form> -->
+<div id="errorDiv" class="alert alert-danger d-none" role="alert"></div>
+<form id="editUserForm">
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="far fa-id-card"></i></span>
+            </div>
+            <input type="text" class="form-control" id="inputID" placeholder="Enter ID" aria-label="ID" aria-describedby="basic-addon1" disabled>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="inputName" placeholder="Enter name" aria-label="Name" aria-describedby="basic-addon2">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Enter last name" aria-label="Last Name" aria-describedby="basic-addon3">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon4"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="inputSurname" placeholder="Enter surname" aria-label="Surname" aria-describedby="basic-addon4">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon5"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" aria-label="Username" aria-describedby="basic-addon5">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon6"><i class="far fa-envelope"></i></span>
+            </div>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" aria-label="Email" aria-describedby="basic-addon6">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon7"><i class="fas fa-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Enter password" aria-label="Password" aria-describedby="basic-addon7">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon8"><i class="fas fa-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="inputRetypePassword" placeholder="Retype password" aria-label="Retype Password" aria-describedby="basic-addon8">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon9"><i class="fas fa-venus-mars"></i></span>
+            </div>
+            <select id="inputGender" class="form-control" aria-label="Gender" aria-describedby="basic-addon9">
+                <option value="" selected>Choose...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon10"><i class="fas fa-toggle-on"></i></span>
+            </div>
+            <select id="inputEnabled" class="form-control" aria-label="Enabled" aria-describedby="basic-addon10">
+                <option value="" selected>Choose...</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-secondary" onclick="cancelEditUser()"><i class="fas fa-times"></i>Limpiar Campos</button>
+        <button type="submit" id="insertUserButton" class="btn btn-primary"><i class="fas fa-save"></i> Save Edits</button>
+    </div>
 </form>
-<hr>
 
 
-<h1>Editar Usuario</h1>
+<!-- <h1>Editar Usuario</h1>
 <form id="formularioEditarUsuario" name="formularioEditarUsuario" onkeydown="return event.key != 'Enter';" onsubmit="return false" class="row">
     <div class="mb-3 col-md-12 input-group">
         <label class="input-group-text" for="idEditar">Id</label>
@@ -157,7 +251,7 @@ echo '<h2>Busqueda de usuarios: </h2>';
 
     </div>
     <button type="submit" onclick="editarUsuario()">Actualizar Usuario</button>
-</form>
+</form> -->
 
 <div id="capaResultadosBusqueda">
 

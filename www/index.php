@@ -12,7 +12,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
 
 <head>
     <title>my web</title>
-    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Cache-Control" content="no-store" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="librerias/bootstrap-5.1.3-dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,23 +24,24 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/users.css">
 </head>
 
 <body>
     <section id="secMenuPagina" class="container-fluid">
-    <section id="secEncabezadoPagina" class="container-fluid">
-        <div class="row">
-            <div class="divTituloApp col-lg-8 col-md-8 d-none d-md-block">Desarrollo de Interfaces - Manel Serna</div>
-        </div>
-    </section>
+        <section id="secEncabezadoPagina" class="container-fluid">
+            <div class="row">
+                <div class="divTituloApp col-lg-12 col-md-12 d-none d-md-block">Desarrollo de Interfaces - Manel Serna</div>
+            </div>
+        </section>
 
-        <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Fourth navbar example">
+        <nav class="navbar navbar-expand-sm navbar-light" aria-label="Fourth navbar example">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <h1>Rift Royale</h1>
+                    <img src="./img/Untitled.png" width="340px">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarsExample04">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -59,7 +60,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
                             </ul>
                         </li>
                     </ul>
-                    <div class="divLog">
+                    <div class="divLog ml-auto">
                         <?php
                         if (isset($_SESSION['usuario'])) {
                             echo $_SESSION['usuario'];
