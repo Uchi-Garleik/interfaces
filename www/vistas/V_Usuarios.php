@@ -18,7 +18,7 @@ echo '<h2>Busqueda de usuarios: </h2>';
         <input type="text" id="movil0" name="movil"> <br>
     </div>
     <div class="button-field">
-        <button type="button" onclick="buscarUsuarios()" class="title" id="buscar-btn">BUSCAR</button>
+        <button type="button" onclick="buscarUsuarios(null, null, 'buscarUsuarios')" class="title" id="buscar-btn">BUSCAR</button>
     </div>
 </form>
 <hr>

@@ -16,11 +16,13 @@
             $movil='';
             $usuario = '';
             $pass = '';
+            $filtro = '';
             extract($filtros);
-            
             $SQL="SELECT * FROM usuarios WHERE 1=1 ";
             
-            if($usuario != '' && $pass != ''){
+
+
+            if( $filtro == 'validarUsuario' || $usuario != '' && $pass != ''){
                 $usuario = addslashes($usuario);
                 $pass = addslashes($pass);
                 $SQL.= " AND login = '$usuario' AND pass = MD5('$pass') ";
@@ -58,8 +60,8 @@
                     $SQL.=" ) ";
                 }
             }
-            // echo $SQL;
             $usuarios=$this->DAO->consultar($SQL);
+
             return $usuarios;
         }
 

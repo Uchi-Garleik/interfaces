@@ -42,6 +42,7 @@
                 $valido = 'S';
                 $_SESSION['usuario'] = $usuarios[0]['login'];
             }
+            echo $valido;
             return $valido;
         }
 
@@ -53,14 +54,35 @@
 
         }
         public function buscarUsuarios($filtros=array()){
-            $usuarios=$this->modelo->buscarUsuarios($filtros);
-            if (isset($_GET['pagina'])){
-                //$_GET['pagina'] = $_GET['pagina']+1;
-                $this->vistaUsuariosPaginacion($_GET['pagina'],4);
+            if(isset($_GET['filtro'])){
+                switch ($_GET['filtro']) {
+                    case 'login':
+                        $usuarios = $this->modelo->buscarUsuarios($filtros);
+                        echo "what the fuck";
+                        if (sizeof($usuarios) == 0){
+                            echo "incorrect_login";
+                        }else {
+                            echo "login";
+                        }
+                        break;
+                    
+                    default:
+                        $usuarios=$this->modelo->buscarUsuarios($filtros);
+                        Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+                        break;
+                }
             }else{
-                $this->vistaUsuariosPaginacion(1,4);
+                $usuarios=$this->modelo->buscarUsuarios($filtros);
+                if (isset($_GET['pagina'])){
+                    //$_GET['pagina'] = $_GET['pagina']+1;
+                    $this->vistaUsuariosPaginacion($_GET['pagina'],4);
+                }else{
+                    $this->vistaUsuariosPaginacion(1,4);
+                }
+                //Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
             }
-            //Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+
+
         }
 
         public function insertarUsuario($filtros=array()){

@@ -1,6 +1,6 @@
-function buscarUsuarios(id_Usuario, pagina){
+function buscarUsuarios(id_Usuario, pagina, filtro){
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
+    let parametros = "controlador=Usuarios&metodo="+filtro;
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
     if ( id_Usuario != null ) {
         parametros += "&id_Usuario=" + id_Usuario;
@@ -10,6 +10,12 @@ function buscarUsuarios(id_Usuario, pagina){
         parametros += "&pagina=" + pagina;
     }
 
+    if ( filtro != null ){
+        parametros += "&filtro="+filtro;
+    }
+
+    console.log(parametros);
+    console.log("controladores/C_Ajax.php?" + parametros, opciones);
     fetch("controladores/C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
@@ -18,40 +24,23 @@ function buscarUsuarios(id_Usuario, pagina){
             }
         })
         .then(vista => {
-            document.getElementById("capaResultadosBusqueda").innerHTML = vista;
-            if (id_Usuario != null) {
-                document.querySelector('#idEditar').value = document.querySelector('td.id_Usuario').innerHTML;
-                document.querySelector('#nombreEditar').value = document.querySelector('td.nombre').innerHTML;
-                document.querySelector('#apellido_1_Editar').value = document.querySelector('td.apellido_1').innerHTML;
-                document.querySelector('#apellido_2_Editar').value = document.querySelector('td.apellido_2').innerHTML;
-                switch (document.querySelector('td.genero').innerHTML) {
-                    case "Hombre":
-                        document.querySelector('#hombreEditar').checked = true;
-                        break;
-                    case "Mujer":
-                        document.querySelector('#mujerEditar').checked = true;
-                        break;
-                    case "No especificado":
-                        document.querySelector('#nodecirEditar').checked = true;
-                        break;
-                    default:
-                        break;
-                }
-                document.querySelector('#mailEditar').value = document.querySelector('td.mail').innerHTML;
-                document.querySelector('#movilEditar').value = document.querySelector('td.movil').innerHTML;
-                document.querySelector('#loginEditar').value = document.querySelector('td.login').innerHTML;
-                document.querySelector('#passEditar').value = document.querySelector('td.pass').innerHTML;
-                switch (document.querySelector('td.estado').innerHTML) {
-                    case "activo":
-                        document.querySelector('#activoSiEditar').checked = true;
-                        break;
-                    case "inactivo":
-                        document.querySelector('#activoNoEditar').checked = true;
-                        break;
-                    default:
-                        break;
-                }
+            console.log(vista);
+            switch (filtro) {
+                case "validarUsuario":
+                    if(vista == "S"){
+                        console.log("Hola");
+                        document.location = "/index.php";
+                    }else{
+                        console.log("adio");
+                    }
+                    
+                    break;
+                default:
+                    
+                    break;
             }
+
+            
         })
         .catch(err => {
             console.log("Error al realizar la peticion.", err.message);

@@ -1,97 +1,32 @@
-/* html{
-    background: url('../img/bg3.png'), lightgray 50% / cover no-repeat;
+:root{
+    --primary-100:#d4eaf7;
+    --primary-200:#b6ccd8;
+    --primary-300:#3b3c3d;
+    --accent-100:#71c4ef;
+    --accent-200:#00668c;
+    --text-100:#1d1c1c;
+    --text-200:#313d44;
+    --bg-100:#fffefb;
+    --bg-200:#f5f4f1;
+    --bg-300:#cccbc8;
+      
 }
 
-#formularioLogin {
-    width: 426px;
-    height: 426px;
-    background: linear-gradient(to bottom right, #FFDB90, #7A5622);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2em;
-    margin-left: auto;
-    margin-right: auto;
+body{
+    /* background:linear-gradient(to bottom right, #03425a, #002a39 ); */
+    background-color: var(--accent-200);
+
 }
 
-#formularioLogin>div {
-    background: url('../img/bg3.png'), lightgray 50% / cover no-repeat;
-    width: 98%;
-    height: 98%;
-    text-align: center;
+#section .form-row{
+    margin: 0px;
 }
 
-#formularioLogin>div>div {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
+#section{
+    /* background:linear-gradient(to bottom right, var(--accent-100), var(--accent-200) ); */
+    background-color: var(--accent-200);
+    box-shadow: 0px 0px 7px 1px #000; 
+    width: 40em;
+    height: 20em;
+    border-radius: 13px;
 }
-
-#formularioLogin>div>div:last-of-type {
-    background: linear-gradient(to bottom right, #FFDB90, #7A5622);
-    display: inline-block;
-    margin-top: 2em;
-}
-
-#formularioLogin button {
-    margin: 3px;
-    width: 172px;
-    height: 60px;
-    background: linear-gradient(180deg, #205C8C 0%, #0E2C38 100%);
-    box-shadow: 0px 0px 12px 0px #000 inset;
-    color: var(--secondary-title-color);
-    border: none;
-
-    font-size: 23px;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1.15px;
-}
-
-.input-field {
-    border-radius: 0px;
-    border: 1.2px solid #FFDB90;
-    background: #091325;
-    width: 260px;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-}
-
-.input-field>label {
-    color: var(--secondary-title-color);
-    border-bottom: 3px var(--main-title-color) solid;
-    font-variant-numeric: lining-nums tabular-nums;
-    font-size: 10px;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.6px;
-    font-family: 'beaufort-bold';
-    padding-top: 0.7em;
-}
-
-.input-field>input {
-    height: 100%;
-    background: transparent;
-    border: none;
-    color: #FFF;
-    font-variant-numeric: lining-nums tabular-nums;
-    font-family: 'spiegel-regular';
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.3px;
-}
-
-span{
-    font-size: 11px;
-}
-
-.input-field>* {
-    margin: 0 17px;
-} */
