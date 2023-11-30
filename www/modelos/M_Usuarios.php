@@ -60,6 +60,8 @@
                     $SQL.=" ) ";
                 }
             }
+            echo "MY SQL:";
+            echo $SQL;
             $usuarios=$this->DAO->consultar($SQL);
 
             return $usuarios;

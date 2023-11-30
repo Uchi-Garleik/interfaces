@@ -13,9 +13,9 @@
 }
 
 body{
-    /* background:linear-gradient(to bottom right, #03425a, #002a39 ); */
-    /* background-color: var(--accent-200); */
-    background: url("../img/key_pattern+copy.jpg");
+    background: url("../img/whitebackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #section .form-row{

@@ -30,9 +30,9 @@ class C_Usuarios extends Controlador
         Vista::render('V_Paginador.php', array('paginationData' => $paginationData));
     }
 
-    public function vistaUsuariosPaginacion($currentPage, $itemsPerPage)
+    public function vistaUsuariosPaginacion($currentPage, $itemsPerPage, $filtros)
     {
-        $usuarios =  $this->modelo->buscarUsuarios();
+        $usuarios =  $this->modelo->buscarUsuarios($filtros);
         $paginationData = PaginationService::getPaginationData($currentPage, $itemsPerPage, $usuarios);
         $usuariosPaginado = array_slice($usuarios, $paginationData['pageFirstResult'], $itemsPerPage);
         Vista::render('V_Paginador.php', array('paginationData' => $paginationData));
@@ -74,12 +74,12 @@ class C_Usuarios extends Controlador
                         return $valido;
                     break;
                 case 'buscarTodos':
-                    $usuarios = $this->modelo->buscarUsuarios($filtros);
+                    // $usuarios = $this->modelo->buscarUsuarios($filtros);
                     if (isset($_GET['pagina'])) {
                         //$_GET['pagina'] = $_GET['pagina']+1;
-                        $this->vistaUsuariosPaginacion($_GET['pagina'], 4);
+                        $this->vistaUsuariosPaginacion($_GET['pagina'], 4, $filtros);
                     } else {
-                        $this->vistaUsuariosPaginacion(1, 4);
+                        $this->vistaUsuariosPaginacion(1, 4, $filtros);
                     }
                     break;
                 default:
@@ -88,12 +88,12 @@ class C_Usuarios extends Controlador
                     break;
             }
         } else {
-            $usuarios = $this->modelo->buscarUsuarios($filtros);
+            // $usuarios = $this->modelo->buscarUsuarios($filtros);
             if (isset($_GET['pagina'])) {
                 //$_GET['pagina'] = $_GET['pagina']+1;
-                $this->vistaUsuariosPaginacion($_GET['pagina'], 4);
+                $this->vistaUsuariosPaginacion($_GET['pagina'], 4, $filtros);
             } else {
-                $this->vistaUsuariosPaginacion(1, 4);
+                $this->vistaUsuariosPaginacion(1, 4, $filtros);
             }
             //Vista::render('V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }

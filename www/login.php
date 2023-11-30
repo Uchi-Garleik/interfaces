@@ -41,37 +41,40 @@
 </head>
 
 <body class="d-flex align-items-center justify-content-center">
-    <div id="section" class="row">
-        <div class="m-auto col-lg-12">
-            <h1 class="text-center text-capitalize">Login Form</h1>
-            <form id="formularioBuscar" method="post" action="login.php">
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="far fa-id-card"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Enter ID" aria-label="ID" aria-describedby="basic-addon1">
+
+<div id="section" class="row">
+    <div class="col-lg-5 col-md-5 col-sm-5 m-auto">
+        <h1 class="text-center text-capitalize">Login Form</h1>
+        <form id="formularioBuscar" method="post" action="login.php">
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="far fa-id-card"></i></span>
                     </div>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Enter ID" aria-label="ID" aria-describedby="basic-addon1">
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon2"><i class="fas fa-lock"></i></span>
-                        </div>
-                        <input type="password" class="form-control" id="password" name="pass" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-lock"></i></span>
                     </div>
+                    <input type="password" class="form-control" id="password" name="pass" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <button type="button" onclick="buscarUsuarios(null, null, 'buscarUsuarios','login')" id="buttonlogin" class="btn btn-primary btn-block">Login</button>
-                </div>
-                
-            </form>
-            <div id="errorDiv" class="alert alert-danger d-none" role="alert"></div>
+            <div class="form-group">
+                <button type="button" onclick="buscarUsuarios(null, null, 'buscarUsuarios','login')" id="buttonlogin" class="btn btn-primary btn-block">Login</button>
+            </div>
+            
+        </form>
+        <div id="errorDiv" class="alert alert-danger d-none" role="alert"></div>
 
-        </div>
     </div>
+</div>
+
+
 
 
 
