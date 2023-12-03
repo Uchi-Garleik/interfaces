@@ -1,9 +1,9 @@
 // Get the form
 const form = document.querySelector('#buttonlogin');
 
-// Add an event listener to the form for the submit event
-form.addEventListener('click', function(event) {
-    console.log('e');
+function verifyLogin(param) {
+  console.log('e');
+  console.log(param);
   // Prevent the form from submitting
 
   // Get the input fields
@@ -23,6 +23,10 @@ form.addEventListener('click', function(event) {
     errorMessages.push('Please enter your password.');
   }
 
+  // if (param != "") {
+  //   errorMessages.push(param);
+  // }
+
   // Get the error div
   const errorDiv = document.querySelector('#errorDiv');
 
@@ -32,6 +36,6 @@ form.addEventListener('click', function(event) {
     errorDiv.innerHTML = '<strong>Error:</strong><br>' + errorMessages.join('<br>');
   } else {
     errorDiv.classList.add('d-none');
-
+    buscarUsuarios(null, null, "buscarUsuarios", "login");
   }
-});
+}

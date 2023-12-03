@@ -16,7 +16,7 @@ function getVistaMenuSeleccionado(controlador, metodo) {
         })
         .then(vista => {
 
-            document.getElementById("secContenidoPagina").innerHTML = vista;
+            document.getElementById("content").innerHTML = vista;
             cargarUnScript('js/'+controlador+'.js');
         })
         .catch(err => {

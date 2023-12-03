@@ -1,5 +1,4 @@
 function crearPaginado(){
-    console.log('€');
     const resultadosPorPagina = document.querySelector('#numResultadosPagina');
 
     let opciones = { method: "GET" };
@@ -14,7 +13,7 @@ function crearPaginado(){
             }
         })
         .then(vista => {
-            
+
         })
         .catch(err => {
             console.log("Error al realizar la peticion.", err.message);

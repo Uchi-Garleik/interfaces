@@ -1,6 +1,6 @@
 changeInsertUserButton();
-
 function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
+    console.log("im logging in");
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=" + metodo;
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
@@ -33,7 +33,11 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
                         console.log("correct login");
                         document.location = "/index.php";
                     } else {
+                        // document.querySelector('#errorDiv')
                         console.log("incorrect login");
+                        const errorDiv = document.querySelector('#errorDiv');
+                        errorDiv.classList.remove('d-none');
+                        errorDiv.innerHTML = '<strong>Error:</strong><br>Incorrect Login<br>';
                     }
                     break;
                 case "buscarTodos":
@@ -47,22 +51,22 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
 
                     // Iterate over each row
                     for (let row of rows) {
+                        console.log(row.querySelector('.genero').textContent);
                         // Create a new user object
                         let user = {
                             id: row.querySelector('.id_Usuario').textContent,
-                            name: row.querySelector('.nombre').textContent,
-                            lastName: row.querySelector('.apellido_1').textContent,
-                            surname: row.querySelector('.apellido_2').textContent,
-                            email: row.querySelector('.mail').textContent,
+                            nombre: row.querySelector('.nombre').textContent,
+                            apellido_1: row.querySelector('.apellido_1').textContent,
+                            apellido_2: row.querySelector('.apellido_2').textContent,
+                            mail: row.querySelector('.mail').textContent,
+                            movil: row.querySelector('.movil').textContent,
                             // Assuming 'login' is the username
-                            username: row.querySelector('.login').textContent,
-                            password: row.querySelector('.pass').textContent,
-                            gender: row.querySelector('.genero').textContent === 'Hombre' ? 'Male' : 'Female',
+                            login: row.querySelector('.login').textContent,
+                            pass: row.querySelector('.pass').textContent,
+                            genero: row.querySelector('.genero').textContent,
                             // Assuming 'activo' is the enabled status
-                            enabled: row.querySelector('.estado').textContent === 'activo'
+                            activo: row.querySelector('.estado').textContent
                         };
-
-                        // Add the user object to the users array
                         users.push(user);
                     }
 
@@ -70,14 +74,14 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
                     for (let index = 0; index < buttons.length; index++) {
                         buttons[index].addEventListener("click", () => {
                             displayEditUserForm(users[index]);
+                            if (document.querySelector('#insertFields').classList.contains("d-none")) {
+                                document.querySelector('#insertFields').classList.remove("d-none");
+                                document.querySelector('#displayInsertFormBtn').classList.replace("btn-outline-primary", "btn-primary")
+                            }
                         });
                     }
 
-
-
-
-                    // Now 'users' is an array of user objects
-                    console.log(users);
+                    cancelEditUser();
                     break;
                 default:
 
@@ -91,58 +95,138 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
         });
 }
 
-
-
-
 function displayEditUserForm(user) {
     // Get the edit user form element
     const editUserForm = document.querySelector('#editUserForm');
-
+    console.log(user);
     // Fill the form with the user's information
     document.querySelector('#inputID').value = user.id;
-    document.querySelector('#inputName').value = user.name;
-    document.querySelector('#inputLastName').value = user.lastName;
-    document.querySelector('#inputSurname').value = user.surname;
-    document.querySelector('#inputUsername').value = user.username;
-    document.querySelector('#inputEmail').value = user.email;
-    document.querySelector('#inputPassword').value = user.password;
-    document.querySelector('#inputRetypePassword').value = user.password;
-    document.querySelector('#inputGender').value = user.gender;
-    document.querySelector('#inputEnabled').value = user.enabled ? 'Yes' : 'No';
+    document.querySelector('#nombre').value = user.nombre;
+    document.querySelector('#apellido_1').value = user.apellido_1;
+    document.querySelector('#apellido_2').value = user.apellido_2;
+    document.querySelector('#login').value = user.login;
+    document.querySelector('#mail').value = user.mail;
+    document.querySelector('#movil').value = user.movil;
+    document.querySelector('#pass').value = user.pass;
+    document.querySelector('#passverify').value = user.pass;
+    document.querySelector('#sexo').value = user.genero;
+    document.querySelector('#activo').value = user.activo;
     changeInsertUserButton();
     // Display the edit user form
     editUserForm.style.display = 'block';
 
 }
 
+
 function changeInsertUserButton() {
+    const formTitle = document.querySelector('#insertUserTitle');
     const insertUserButton = document.querySelector('#insertUserButton');
+    const editUserButton = document.querySelector('#editUserButton');
     if (document.querySelector('#inputID').value == '') {
-        insertUserButton.innerHTML = "Insertar Usuario"
-    }else{
-        insertUserButton.innerHTML = "Guardar Usuario"
+        formTitle.textContent = "Insertar Usuario";
+        insertUserButton.setAttribute("style", "display:inline-block;");
+        editUserButton.setAttribute("style", "display:none;");
+    } else {
+        formTitle.textContent = "Editar Usuario";
+        insertUserButton.setAttribute("style", "display:none;");
+        editUserButton.setAttribute("style", "display:inline-block;");
     }
-    
 }
 
 function cancelEditUser() {
     document.querySelector('#inputID').value = '';
-    document.querySelector('#inputName').value = '';
-    document.querySelector('#inputLastName').value = '';
-    document.querySelector('#inputSurname').value = '';
-    document.querySelector('#inputUsername').value = '';
-    document.querySelector('#inputEmail').value = '';
-    document.querySelector('#inputPassword').value = '';
-    document.querySelector('#inputRetypePassword').value = '';
-    document.querySelector('#inputGender').value = '';
-    document.querySelector('#inputEnabled').value = '';
+    document.querySelector('#nombre').value = '';
+    document.querySelector('#apellido_1').value = '';
+    document.querySelector('#apellido_2').value = '';
+    document.querySelector('#login').value = '';
+    document.querySelector('#mail').value = '';
+    document.querySelector('#movil').value = '';
+    document.querySelector('#pass').value = '';
+    document.querySelector('#passverify').value = '';
+    document.querySelector('#sexo').value = '';
+    document.querySelector('#activo').value = '';
     changeInsertUserButton();
 }
 
-function insertarUsuario() {
+function checkInsertForm(metodo) {
+    const nombre = document.querySelector('#nombre');
+    const apellido_1 = document.querySelector('#apellido_1');
+    const apellido_2 = document.querySelector('#apellido_2');
+    const login = document.querySelector('#login');
+    const mail = document.querySelector('#mail');
+    const movil = document.querySelector('#movil');
+    const pass = document.querySelector('#pass');
+    const passVerify = document.querySelector('#passverify');
+    const gender = document.querySelector('#sexo');
+    const status = document.querySelector('#activo');
+    const errorDiv = document.querySelector('#insertErrorDiv');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const errorMessages = [];
+
+    if (nombre.value.trim() === '') {
+        errorMessages.push("El nombre no puede estar vacio");
+    }
+
+    if (apellido_1.value === '') {
+        errorMessages.push("El primer apellido no puede estar vacio");
+    }
+
+    if (apellido_2.value === '') {
+        console.log("nombre vacio");
+        errorMessages.push("El segundo de usuario no puede estar vacio");
+    }
+
+    if (login.value === '') {
+        console.log("nombre vacio");
+        errorMessages.push("El nombre de usuario no puede estar vacio");
+    }
+
+    if (!(emailRegex.test(mail.value))) {
+        errorMessages.push("Introduce un correo electrónico valido");
+    }
+
+    if (movil.value === '' || !/^\d+$/.test(movil.value)) {
+        errorMessages.push("Introduzca un telefono móvil correcto");
+    }
+
+    if (pass.value === '') {
+        errorMessages.push("La contraseña no puede estar vacia");
+    }
+
+    if (pass.value != passVerify.value) {
+        errorMessages.push("Escriba la contraseña correctamente");
+    }
+
+    if (gender.value === '') {
+        errorMessages.push("Especifique un genero o seleccione \"otro\"");
+    }
+
+    if (status.value === '') {
+        errorMessages.push("El usuario debe estar activado o desactivado");
+    }
+
+
+    if (errorMessages.length > 0) {
+        console.log("errores");
+        errorDiv.classList.remove('d-none');
+        errorDiv.innerHTML = '<strong>Error:</strong><br>' + errorMessages.join('<br>');
+    } else {
+        console.log("vacio");
+        errorDiv.classList.add('d-none');
+        insertarUsuario(metodo);
+    }
+}
+
+function insertarUsuario(metodo) {
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=insertarUsuario";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioInsertarUsuario"))).toString();
+    let parametros = "controlador=Usuarios&metodo=" + metodo;
+    // WE DO THIS CUS THE ID IS DISABLED ON THE FORM
+    if (metodo == "editarUsuario") {
+        parametros += "&id_Usuario=" + document.querySelector('#inputID').value;
+    }
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("editUserForm"))).toString();
+    console.log("parametros de isnertar");
+    console.log(parametros);
     fetch("controladores/C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
@@ -151,7 +235,7 @@ function insertarUsuario() {
             }
         })
         .then(vista => {
-            buscarUsuarios();
+            buscarUsuarios(null, null, "buscarUsuarios", "buscarTodos");
         })
         .catch(err => {
             console.log("Error al realizar la peticion.", err.message);
@@ -183,4 +267,16 @@ function editarUsuario(id_Usuario) {
         .catch(err => {
             console.log("Error al realizar la peticion.", err.message);
         });
+}
+
+function displayInsertUserView() {
+    const view = document.querySelector('#insertFields');
+    const btn = document.querySelector('#displayInsertFormBtn');
+    view.classList.contains("d-none") ? (view.classList.remove("d-none"), btn.classList.replace("btn-outline-primary", "btn-primary")) : (view.classList.add("d-none"), btn.classList.replace("btn-primary", "btn-outline-primary"));
+}
+
+function displaySearchUserView() {
+    const view = document.querySelector('#searchFields');
+    const btn = document.querySelector('#displaySearchFormBtn');
+    view.classList.contains("d-none") ? (view.classList.remove("d-none"), btn.classList.replace("btn-outline-primary", "btn-primary")) : (view.classList.add("d-none"), btn.classList.replace("btn-primary", "btn-outline-primary"));
 }

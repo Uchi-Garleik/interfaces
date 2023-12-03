@@ -53,18 +53,6 @@
         echo '<td> <button class="buttonEditUser">Editar</button> </td>';
         echo '</tr>';
     }
-
     echo '</table>';
     echo '</div>';
 ?>
-
-<button id="#holabtn" onclick="console.log('wtf')">Hola</button>
-
-<script>
-    var xyz = 0;
-    console.log("holaholaholahola");
-    console.log(xyz);
-    /*document.querySelector('#holabtn').addEventListener("click",()=>{
-        console.log(xyz);
-    });*/
-</script>
