@@ -28,30 +28,3 @@
 tbody{
     text-align: left;
 }
-
-/*
-#tableDiv{
-    width: fit-content;
-    background: linear-gradient(to bottom right, #FFDB90, #7A5622);
-    padding: 0.2em;
-}
-
-th{
-    background-color: #010A13;
-    font-family: 'beaufort-bold';
-    color: var(--main-title-color);
-    font-weight: normal;
-}
-
-tr{
-    border-bottom: 1px white solid;
-    background-color: #030D22;
-}
-
-td,th{
-    padding: 0.3em 0.5em;
-}
-
-table tr:nth-child(even){
-    background-color: #0f1c35;
-} */

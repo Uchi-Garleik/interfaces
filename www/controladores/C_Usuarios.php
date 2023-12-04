@@ -65,8 +65,4 @@ class C_Usuarios extends Controlador
         $usuarios = $this->modelo->insertarUsuario($filtros);
     }
 
-    public function editarUsuario($filtros = array())
-    {
-        $this->modelo->insertarUsuario($filtros);
-    }
 }

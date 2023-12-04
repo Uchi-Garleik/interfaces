@@ -49,8 +49,7 @@
         echo '<td class="estado">'.returnEstado($fila).'</td>';
         echo '<td class="login">'.$fila['login'].'</td>';
         echo '<td class="pass">'.$fila['pass'].'</td>';
-//        echo '<td> <button onclick="guardarInformacion('.$fila['id_Usuario'].')">Editar</button> </td>';
-        echo '<td> <button class="buttonEditUser">Editar</button> </td>';
+        echo '<td> <button class="buttonEditUser btn btn-primary">Editar</button> </td>';
         echo '</tr>';
     }
     echo '</table>';

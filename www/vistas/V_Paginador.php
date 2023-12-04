@@ -2,9 +2,6 @@
 
 $paginationData = $datos['paginationData'];
 
-// for ($i=0; $i < $paginationData['numberOfPages'] ; $i++) {
-//     echo "<span class=\"pagina$i\" onclick=\"buscarUsuarios(null, $i)\">". $i+1 ."...</span>";
-// }
 echo "<div class=\"justify-content-center align-items-center d-flex flex-column\">";
 echo "<div class=\"pagination\">";
 
@@ -27,10 +24,8 @@ echo "<div class=\"page-item\">";
 echo "<span class=\"page-link\" onclick=\"buscarUsuarios(null," . $paginationData['currentPage'] - 1 . ",'buscarUsuarios','buscarTodos')\">" . $paginationData['currentPage'] . "</span>";
 echo "</div>";
 
-// CURRENT PLUS ONE
 if ($paginationData['currentPage'] < $paginationData['numberOfPages']) {
     echo "<div class=\"page-item\">";
-    // echo "<span class=\"page-link\" onclick=\"buscarUsuarios(null," . $paginationData['currentPage'] . ",'buscarUsuarios','buscarTodos')\">(" . $paginationData['currentPage'] + 1 . ")</span>";
     echo "<span class=\"page-link\" onclick=\"buscarUsuarios(null," . $paginationData['currentPage'] . ",'buscarUsuarios','buscarTodos')\"><span aria-hidden=\"true\">&raquo;</span><span class=\"sr-only\">Siguiente</span></span>";
     echo "</div>";
 

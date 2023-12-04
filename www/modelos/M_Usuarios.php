@@ -146,54 +146,5 @@ class M_Usuarios extends Modelo
             $this->DAO->insertar($SQL);
         }
     }
-    public function editarUsuario($filtros = array())
-    {
-        extract($filtros);
-        var_dump($filtros);
-        if ($nombre == "") {
-            $nombre = " ";
-        }
 
-        if ($apellido_1 == "") {
-            $apellido_1 = " ";
-        }
-
-        if ($apellido_2 == "") {
-            $apellido_2 = " ";
-        }
-
-        if ($sexo == "") {
-            $sexo = " ";
-        }
-
-        if ($mail == "") {
-            $mail = "";
-        }
-
-        if ($movil == "") {
-            $movil = " ";
-        }
-        if ($login == "") {
-            $login = " ";
-        }
-
-        if ($pass == "") {
-            $pass = " ";
-        }
-
-        if ($activo == "") {
-            $activo = " ";
-        }
-
-        if ($activo == 'activo') {
-            $activo = 'S';
-        } else {
-            $activo = 'N';
-        }
-
-
-        $SQL = "UPDATE usuarios SET nombre ='$nombre', apellido_1 = '$apellido_1', apellido_2 = '$apellido_2', sexo = '$sexo', mail = '$mail', movil = '$movil', login = '$login', pass =MD5('$pass'), activo = '$activo' WHERE id_Usuario = $id_Usuario";
-        echo $SQL;
-        $this->DAO->actualizar($SQL);
-    }
 }

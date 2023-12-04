@@ -1,6 +1,5 @@
 changeInsertUserButton();
 function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
-    console.log("im logging in");
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=" + metodo;
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
@@ -16,8 +15,6 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
         parametros += "&filtro=" + filtro;
     }
 
-    console.log(parametros);
-    console.log("controladores/C_Ajax.php?" + parametros, opciones);
     fetch("controladores/C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
@@ -26,15 +23,11 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
             }
         })
         .then(vista => {
-            console.log(vista);
             switch (filtro) {
                 case "login":
                     if (vista == "S") {
-                        console.log("correct login");
                         document.location = "/index.php";
                     } else {
-                        // document.querySelector('#errorDiv')
-                        console.log("incorrect login");
                         const errorDiv = document.querySelector('#errorDiv');
                         errorDiv.classList.remove('d-none');
                         errorDiv.innerHTML = '<strong>Error:</strong><br>Incorrect Login<br>';
@@ -43,16 +36,12 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
                 case "buscarTodos":
                     div = document.querySelector('#capaResultadosBusqueda').innerHTML = vista;
                     changeInsertUserButton();
-                    // let rows = document.querySelectorAll('table tr:not(:first-child)');
                     let rows = document.querySelectorAll('tbody tr');
 
-                    // Initialize an empty array to store the user objects
                     let users = [];
 
-                    // Iterate over each row
                     for (let row of rows) {
                         console.log(row.querySelector('.genero').textContent);
-                        // Create a new user object
                         let user = {
                             id: row.querySelector('.id_Usuario').textContent,
                             nombre: row.querySelector('.nombre').textContent,
@@ -60,11 +49,9 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
                             apellido_2: row.querySelector('.apellido_2').textContent,
                             mail: row.querySelector('.mail').textContent,
                             movil: row.querySelector('.movil').textContent,
-                            // Assuming 'login' is the username
                             login: row.querySelector('.login').textContent,
                             pass: row.querySelector('.pass').textContent,
                             genero: row.querySelector('.genero').textContent,
-                            // Assuming 'activo' is the enabled status
                             activo: row.querySelector('.estado').textContent
                         };
                         users.push(user);
@@ -96,10 +83,8 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
 }
 
 function displayEditUserForm(user) {
-    // Get the edit user form element
     const editUserForm = document.querySelector('#editUserForm');
     console.log(user);
-    // Fill the form with the user's information
     document.querySelector('#inputID').value = user.id;
     document.querySelector('#nombre').value = user.nombre;
     document.querySelector('#apellido_1').value = user.apellido_1;
@@ -112,7 +97,6 @@ function displayEditUserForm(user) {
     document.querySelector('#sexo').value = user.genero;
     document.querySelector('#activo').value = user.activo;
     changeInsertUserButton();
-    // Display the edit user form
     editUserForm.style.display = 'block';
 
 }
@@ -219,8 +203,7 @@ function checkInsertForm(metodo) {
 
 function insertarUsuario(metodo) {
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=" + metodo;
-    // WE DO THIS CUS THE ID IS DISABLED ON THE FORM
+    let parametros = "controlador=Usuarios&metodo=insertarUsuario";
     if (metodo == "editarUsuario") {
         parametros += "&id_Usuario=" + document.querySelector('#inputID').value;
     }
@@ -244,29 +227,6 @@ function insertarUsuario(metodo) {
 
 function guardarInformacion(id_Usuario) {
     buscarUsuarios(id_Usuario);
-}
-
-
-function editarUsuario(id_Usuario) {
-    let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=editarUsuario";
-    parametros += "&id_Usuario=" + document.querySelector('#idEditar').value;
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioEditarUsuario"))).toString();
-    console.log("AOEOELE")
-    console.log(parametros);
-    fetch("controladores/C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-                console.log('Respuesta ok');
-                return res.text();
-            }
-        })
-        .then(vista => {
-            buscarUsuarios();
-        })
-        .catch(err => {
-            console.log("Error al realizar la peticion.", err.message);
-        });
 }
 
 function displayInsertUserView() {
