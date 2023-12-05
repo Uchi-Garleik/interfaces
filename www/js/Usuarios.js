@@ -69,6 +69,7 @@ function buscarUsuarios(id_Usuario, pagina, metodo, filtro) {
                     }
 
                     cancelEditUser();
+                    clearSearchFields();
                     break;
                 default:
 
@@ -106,14 +107,20 @@ function changeInsertUserButton() {
     const formTitle = document.querySelector('#insertUserTitle');
     const insertUserButton = document.querySelector('#insertUserButton');
     const editUserButton = document.querySelector('#editUserButton');
+    const passwordField = document.querySelector('#pass');
+    const passwordFieldVerify = document.querySelector('#passverify');
     if (document.querySelector('#inputID').value == '') {
         formTitle.textContent = "Insertar Usuario";
         insertUserButton.setAttribute("style", "display:inline-block;");
         editUserButton.setAttribute("style", "display:none;");
+        passwordField.removeAttribute("disabled");
+        passwordFieldVerify.removeAttribute("disabled");
     } else {
         formTitle.textContent = "Editar Usuario";
         insertUserButton.setAttribute("style", "display:none;");
         editUserButton.setAttribute("style", "display:inline-block;");
+        passwordField.setAttribute("disabled","true");
+        passwordFieldVerify.setAttribute("disabled","true");
     }
 }
 
@@ -155,10 +162,10 @@ function checkInsertForm(metodo) {
         errorMessages.push("El primer apellido no puede estar vacio");
     }
 
-    if (apellido_2.value === '') {
-        console.log("nombre vacio");
-        errorMessages.push("El segundo de usuario no puede estar vacio");
-    }
+    // if (apellido_2.value === '') {
+    //     console.log("nombre vacio");
+    //     errorMessages.push("El segundo de usuario no puede estar vacio");
+    // }
 
     if (login.value === '') {
         console.log("nombre vacio");
@@ -201,6 +208,12 @@ function checkInsertForm(metodo) {
     }
 }
 
+function clearSearchFields(){
+    document.querySelector('#movil0').textContent = "";
+    document.querySelector('#mail').textContent = "";
+    document.querySelector('#nombre0').textContent = "";
+}
+
 function insertarUsuario(metodo) {
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=insertarUsuario";
@@ -208,6 +221,7 @@ function insertarUsuario(metodo) {
         parametros += "&id_Usuario=" + document.querySelector('#inputID').value;
     }
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("editUserForm"))).toString();
+    console.log(parametros);
     console.log("parametros de isnertar");
     console.log(parametros);
     fetch("controladores/C_Ajax.php?" + parametros, opciones)
@@ -219,6 +233,7 @@ function insertarUsuario(metodo) {
         })
         .then(vista => {
             buscarUsuarios(null, null, "buscarUsuarios", "buscarTodos");
+            clearSearchFields();
         })
         .catch(err => {
             console.log("Error al realizar la peticion.", err.message);

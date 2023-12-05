@@ -130,7 +130,8 @@ class M_Usuarios extends Modelo
         }
 
         if ($id_Usuario != '') {
-            $SQL = "UPDATE usuarios SET nombre ='$nombre', apellido_1 = '$apellido_1', apellido_2 = '$apellido_2', sexo = '$sexo', mail = '$mail', movil = '$movil', login = '$login', pass =MD5('$pass'), activo = '$activo' WHERE id_Usuario = $id_Usuario";
+            // $SQL = "UPDATE usuarios SET nombre ='$nombre', apellido_1 = '$apellido_1', apellido_2 = '$apellido_2', sexo = '$sexo', mail = '$mail', movil = '$movil', login = '$login', pass =MD5('$pass'), activo = '$activo' WHERE id_Usuario = $id_Usuario";
+            $SQL = "UPDATE usuarios SET nombre ='$nombre', apellido_1 = '$apellido_1', apellido_2 = '$apellido_2', sexo = '$sexo', mail = '$mail', movil = '$movil', login = '$login', activo = '$activo' WHERE id_Usuario = $id_Usuario";
             echo $SQL;
             $this->DAO->actualizar($SQL);
         } else {

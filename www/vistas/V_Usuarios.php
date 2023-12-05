@@ -44,8 +44,8 @@
 <div class="d-none" id="insertFields">
     <h1 id="insertUserTitle">Insertar Usuario</h1>
     <form id="editUserForm">
-        ID Usuario (No Necesario)
-        <div class="form-group">
+        <!-- ID Usuario (No Necesario) -->
+        <div class="form-group d-none">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="far fa-id-card"></i></span>
