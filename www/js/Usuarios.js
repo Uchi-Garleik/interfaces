@@ -107,6 +107,7 @@ function changeInsertUserButton() {
     const formTitle = document.querySelector('#insertUserTitle');
     const insertUserButton = document.querySelector('#insertUserButton');
     const editUserButton = document.querySelector('#editUserButton');
+    const clearFormButton = document.querySelector('#clearFormButton');
     const passwordField = document.querySelector('#pass');
     const passwordFieldVerify = document.querySelector('#passverify');
     if (document.querySelector('#inputID').value == '') {
@@ -119,8 +120,8 @@ function changeInsertUserButton() {
         formTitle.textContent = "Editar Usuario";
         insertUserButton.setAttribute("style", "display:none;");
         editUserButton.setAttribute("style", "display:inline-block;");
-        passwordField.setAttribute("disabled","true");
-        passwordFieldVerify.setAttribute("disabled","true");
+        passwordField.setAttribute("disabled", "true");
+        passwordFieldVerify.setAttribute("disabled", "true");
     }
 }
 
@@ -208,7 +209,7 @@ function checkInsertForm(metodo) {
     }
 }
 
-function clearSearchFields(){
+function clearSearchFields() {
     document.querySelector('#movil0').textContent = "";
     document.querySelector('#mail').textContent = "";
     document.querySelector('#nombre0').textContent = "";
@@ -233,7 +234,19 @@ function insertarUsuario(metodo) {
         })
         .then(vista => {
             buscarUsuarios(null, null, "buscarUsuarios", "buscarTodos");
-            clearSearchFields();
+            console.log(vista);
+            const jsonVista = JSON.parse(vista);
+            console.log(jsonVista);
+            console.log(jsonVista.mensaje);
+            if (jsonVista.codigo == 1) {
+                const errorDiv = document.querySelector('#insertErrorDiv');
+                const errorMessages = [];
+                errorMessages.push(jsonVista.mensaje);
+                errorDiv.classList.remove('d-none');
+                errorDiv.innerHTML = '<strong>Error:</strong><br>' + errorMessages.join('<br>');
+            } else {
+                clearSearchFields();
+            }
         })
         .catch(err => {
             console.log("Error al realizar la peticion.", err.message);

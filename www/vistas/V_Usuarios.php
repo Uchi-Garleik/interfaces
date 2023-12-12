@@ -20,7 +20,7 @@
             Email
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon-email-filtro"><i class="far fa-id-card"></i></span>
+                    <span class="input-group-text" id="basic-addon-email-filtro"><i class="far fa-envelope"></i></span>
                 </div>
                 <input type="text" class="form-control" name="mail" id="mail0" placeholder="johnman@gmail.com" aria-label="nombre" aria-describedby="basic-addon-email-filtro">
             </div>
@@ -30,7 +30,7 @@
             Movil
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon-movil-filtro"><i class="far fa-id-card"></i></span>
+                    <span class="input-group-text" id="basic-addon-movil-filtro"><i class="fa-solid fa-mobile"></i></span>
                 </div>
                 <input type="text" class="form-control" name="movil" id="movil0" placeholder="976123456" aria-label="movil" aria-describedby="basic-addon-movil-filtro">
             </div>
@@ -153,12 +153,13 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-secondary" onclick="cancelEditUser()"><i class="fas fa-times"></i>Limpiar Campos</button>
+            <button type="button" id="clearFormButton" class="btn btn-secondary" onclick="cancelEditUser()"><i class="fas fa-times"></i>Limpiar Campos</button>
             <button type="button" id="insertUserButton" onclick="checkInsertForm('insertarUsuario')" class="btn btn-primary"><i class="fas fa-save"></i> Insertar Usuario</button>
             <button type="button" id="editUserButton" onclick="checkInsertForm('editarUsuario')" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Usuario</button>
         </div>
     </form>
     <div id="insertErrorDiv" class="alert alert-danger d-none" role="alert"></div>
+    <div id="insertSuccessDiv" class="alert alert-success d-none" role="alert"></div>
 </div>
 
 <div id="capaResultadosBusqueda">

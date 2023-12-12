@@ -137,14 +137,14 @@ class M_Usuarios extends Modelo
         } else {
             $usuarios = $this->buscarUsuarios(array("login" => $login, "mail" => $mail, "filtro" => "insertUsuario"));
             if (sizeof($usuarios) > 0) {
-                echo "USERS FOUND";
+                echo "{ \"mensaje\": \"Ya existe un usuario con ese nombre\", \"codigo\": 1}";
             } else {
                 $SQL = "INSERT INTO usuarios (nombre, apellido_1, apellido_2, sexo, fecha_Alta, mail, movil, login, pass, activo) VALUES (";
                 $SQL .= "'$nombre', '$apellido_1', '$apellido_2', '$sexo', NOW(), '$mail', '$movil', '$login', MD5('$pass'), '$activo');";
+                $this->DAO->insertar($SQL);
+                echo "{ \"mensaje\": \"Usuario Introducido Correctamente\", \"codigo\": 0}";
             }
 
-            echo $SQL;
-            $this->DAO->insertar($SQL);
         }
     }
 

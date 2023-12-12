@@ -1,6 +1,6 @@
-.divTituloApp{
+.divTituloApp {
     text-align: center;
-    margin:0 ;
+    margin: 0;
     width: 100%;
     font-size: 1.5em;
     margin: 0;
@@ -8,16 +8,16 @@
 }
 
 @media (max-width: 490px) {
-    img{
+    img {
         width: 270px;
     }
 }
 
-#subheaderTitle > div:first-of-type{
-    margin:0;
+#subheaderTitle>div:first-of-type {
+    margin: 0;
 }
 
-#tableDiv{
+#tableDiv {
     width: 100%;
     overflow: auto;
     scroll-behavior: smooth;
@@ -25,6 +25,32 @@
     text-align: center;
 }
 
-tbody{
+#navbarsExample04 div.ml-auto{
+    color: black!important;
+}
+
+tbody {
     text-align: left;
 }
+
+#formularioBuscar, #editUserForm {
+    background: #e9ecef;
+    padding: 2em 3em;
+    border-bottom: 5px black solid;
+    border-top-left-radius: 33px;
+    border-top-right-radius: 33px;
+    margin-bottom: 1em;
+}
+
+#header{
+    margin-bottom: 2em;
+}
+
+tr td:last-of-type{
+    text-align: center;
+}
+
+tr td{
+    vertical-align: middle!important;
+}
+
