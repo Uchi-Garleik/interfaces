@@ -70,6 +70,7 @@
     <script src="https://kit.fontawesome.com/ed6377cf3c.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
     <script src="bs5/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/Menus.js"></script>
 </body>
 
 </html>
