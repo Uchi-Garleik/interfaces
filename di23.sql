@@ -33,18 +33,23 @@ CREATE TABLE `opcionesmenu` (
   `ID` int(11) NOT NULL,
   `NOMBRE` varchar(50) DEFAULT NULL,
   `ORDEN` int(11) DEFAULT NULL,
+  `ACCION` varchar(1000) DEFAULT NULL,
   `ID_PADRE` int(11) DEFAULT NULL,
-  `ORDEN_EN_PADRE` int(11) DEFAULT NULL,
-  `PRIORIDADROL` int(11) DEFAULT NULL
+  `PUBLICO` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `opcionesmenu`
 --
 
-INSERT INTO `opcionesmenu` (`ID`, `NOMBRE`, `ORDEN`, `ID_PADRE`, `ORDEN_EN_PADRE`, `PRIORIDADROL`) VALUES
-(1, 'Usuarios', NULL, 5, 1, 1),
-(5, 'Menus', 1, 0, 0, 1);
+-- REPARTIDOR::
+-- 1-N POSICION:: ID, X, Y, FECHA, HORA
+-- N-1 HORARIO:: ID, L, M, X, J, V
+
+-- PEDIDO/ALBARAN:: FECHA, ENTREGADO
+-- 1-N POSICION
+
+INSERT INTO `opcionesmenu` (`ID`, `NOMBRE`, `ORDEN`, `ACCION`, `ID_PADRE`, `PUBLICO`) VALUES (1, 'Usuarios', 100, 'desplegar', 0, 1), (2, 'CRUD', 101, 'buscarUsuarios("busqueda")')
 
 -- --------------------------------------------------------
 
@@ -244,7 +249,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `opcionesmenu`
 --
 ALTER TABLE `opcionesmenu`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
