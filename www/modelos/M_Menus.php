@@ -13,7 +13,8 @@ class M_Menus extends Modelo
 
     
     public function getMenus(){
-        $sql = "SELECT * FROM opcionesmenu WHERE 1 = 1";
+        // $sql = "SELECT * FROM opcionesmenu WHERE 1 = 1";
+        $sql = "SELECT * FROM opcionesmenu WHERE 1 = 1 ORDER BY ID_PADRE ASC;";
         return $this->DAO->consultar($sql);
     }
 

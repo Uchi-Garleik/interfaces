@@ -25,32 +25,10 @@
     text-align: center;
 }
 
-<<<<<<< Updated upstream
-#navbarsExample04 div.ml-auto{
-    color: black!important;
-}
-
-=======
->>>>>>> Stashed changes
 tbody {
     text-align: left;
 }
 
-<<<<<<< Updated upstream
-#formularioBuscar, #editUserForm {
-    background: #e9ecef;
-    padding: 2em 3em;
-    border-bottom: 5px black solid;
-    border-top-left-radius: 33px;
-    border-top-right-radius: 33px;
-    margin-bottom: 1em;
-}
-
-#header{
-    margin-bottom: 2em;
-}
-
-=======
 #searchFields{
     margin-top: 2em;
 }
@@ -68,18 +46,10 @@ tbody {
     margin-bottom: 1em;
 }
 
->>>>>>> Stashed changes
 tr td:last-of-type{
     text-align: center;
 }
 
-<<<<<<< Updated upstream
-tr td{
-    vertical-align: middle!important;
-}
-
-=======
 td{
     vertical-align: middle!important;
 }
->>>>>>> Stashed changes

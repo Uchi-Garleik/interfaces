@@ -49,19 +49,9 @@ CREATE TABLE `opcionesmenu` (
 -- PEDIDO/ALBARAN:: FECHA, ENTREGADO
 -- 1-N POSICION
 
-INSERT INTO `opcionesmenu` (`ID`, `NOMBRE`, `ORDEN`, `ACCION`, `ID_PADRE`, `PUBLICO`) VALUES (1, 'Usuarios', 100, 'desplegar', 0, 1), (2, 'CRUD', 101, 'buscarUsuarios("busqueda")')
+INSERT INTO `opcionesmenu` (`ID`, `NOMBRE`, `ORDEN`, `ACCION`, `ID_PADRE`, `PUBLICO`) VALUES (1, 'Usuarios', 1000, 'desplegar', 0, 1), (2, 'CRUD', 1100, 'buscarUsuarios("busqueda")',1,1), (3, 'Productos', 2000, 'desplegar', 0, 0);
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `roles`
---
-
-CREATE TABLE `roles` (
-  `ID` int(11) NOT NULL,
-  `NOMBRE` varchar(30) DEFAULT NULL,
-  `PRIORIDAD` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -224,14 +214,6 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 -- Indices de la tabla `opcionesmenu`
 --
 ALTER TABLE `opcionesmenu`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `ORDEN` (`ORDEN`),
-  ADD UNIQUE KEY `ORDEN_EN_PADRE` (`ORDEN_EN_PADRE`);
-
---
--- Indices de la tabla `roles`
---
-ALTER TABLE `roles`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -249,12 +231,6 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `opcionesmenu`
 --
 ALTER TABLE `opcionesmenu`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `roles`
---
-ALTER TABLE `roles`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
